@@ -1,12 +1,12 @@
-import { Train } from "src/train/entities/train.entity"
+import { Train } from 'src/train/entities/train.entity';
 
 export type Dijkstra = {
-    path : string[],
-    indianaTrain : Train[]
-  }
-  
+  path: string[];
+  indianaTrain: Train[];
+};
+
 export type responseMessage = {
-  statusCode: number,
-  message: string,
-  data : {},
-}
+  statusCode: number;
+  message: string;
+  data: {};
+};

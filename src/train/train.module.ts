@@ -6,8 +6,8 @@ import { Train } from './entities/train.entity';
 import { DijkstraService } from 'src/dijkstra/dijkstra.service';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Train])],
-  providers: [TrainService,DijkstraService],
-  controllers: [TrainController]
+  imports: [TypeOrmModule.forFeature([Train])],
+  providers: [TrainService, DijkstraService],
+  controllers: [TrainController],
 })
 export class TrainModule {}
