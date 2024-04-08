@@ -1,0 +1,15 @@
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col" *ngFor="let header of headers">{{header}}</th>
+    </tr>
+  </thead>
+  <tbody class="table-body" *ngFor="let train of trains">
+    <tr>
+      <td>{{train.departureCity|titlecase}}</td>
+      <td>{{train.arrivalCity|titlecase}}</td>
+      <td>{{train.departureTime}}</td>
+      <td>{{train.travelTime}}</td>
+    </tr>
+  </tbody>
+</table>

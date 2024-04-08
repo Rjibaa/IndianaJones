@@ -1,0 +1,24 @@
+<form class="row">
+  <div class="col-md-4 mb-3">
+    <label for="departureCity" class="form-label">Ville de départ</label>
+    <input minlength="4" #departureCity (input)="departureCity.value = onInput(departureCity.value)" type="text"
+      class="form-control" name="departureCity" placeholder="Ville de départ" [(ngModel)]="indianaTraject.departureCity"
+      #departure="ngModel">
+    <div class="alert alert-danger mt-1" *ngIf="departure.invalid && departure.dirty">
+      La Ville de départ doit avoir au minimum 4 caractères.
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <label for="arrivalCity" class="form-label">Ville d'arrivée</label>
+    <input minlength="4" #arrivalCity (input)="arrivalCity.value = onInput(arrivalCity.value)" type="text"
+      class="form-control" name="arrivalCity" placeholder="Ville d'arrivée" [(ngModel)]="indianaTraject.arrivalCity"
+      #arrival="ngModel">
+    <div class="alert alert-danger mt-1" *ngIf="arrival.invalid && arrival.dirty">
+      La Ville d'arrivée doit avoir au minimum 4 caractères.
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <label class="form-label">Heure de départ</label>
+    <ngb-timepicker name="startTime" [(ngModel)]="indianaTraject.startTime" [spinners]=false></ngb-timepicker>
+  </div>
+</form>

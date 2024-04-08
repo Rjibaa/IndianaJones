@@ -1,0 +1,23 @@
+<div>
+  <ul>
+    <li *ngFor="let item of path">{{item}}</li>
+  </ul>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Ville de départ</th>
+        <th scope="col">Ville d'arrivée</th>
+        <th scope="col">Heure de départ</th>
+        <th scope="col">Durée de trajet</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let train of trains">
+      <tr>
+        <td>{{train.departureCity}}</td>
+        <td>{{train.arrivalCity}}</td>
+        <td>{{train.departureTime}}</td>
+        <td>{{train.travelTime}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

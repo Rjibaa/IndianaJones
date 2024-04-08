@@ -1,0 +1,9 @@
+<div>
+    <div class="text-center">
+        <button class="btn btn-primary" type="button" (click)="onClick()">&lt; Chercher le trajet</button>
+    </div>
+
+    <div class="mt-3">
+        <app-result-table [trains]="trains" [path]="path"></app-result-table>
+    </div>
+</div>

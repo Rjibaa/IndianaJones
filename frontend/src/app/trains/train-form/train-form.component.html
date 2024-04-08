@@ -1,0 +1,40 @@
+<form #trainForm="ngForm" (ngSubmit)="onSubmit(trainForm)">
+  <div class="row">
+
+    <div class="col-md-3 mb-3">
+      <label for="departureCity" class="form-label">Ville de départ</label>
+      <input #departure (input)="departure.value = helperService.capitalizeFirstLettre(departure.value)" type="text"
+        class="form-control" minlength="4" name="departureCity" placeholder="Ville de départ"
+        [(ngModel)]="train.departureCity" #departureCity="ngModel" required>
+      <div class="alert alert-danger mt-1" *ngIf="departureCity.invalid && departureCity.dirty">
+        La Ville de départ doit avoir au minimum 4 caractères
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <label for="arrivalCity" class="form-label">Ville d'arrivée</label>
+      <input #arrival (input)="arrival.value = helperService.capitalizeFirstLettre(arrival.value)" type="text"
+        class="form-control" minlength="4" name="arrivalCity" placeholder="Ville d'arrivée"
+        [(ngModel)]="train.arrivalCity" #arrivalCity="ngModel" required>
+      <div class="alert alert-danger mt-1" *ngIf="arrivalCity.invalid && arrivalCity.dirty">
+        La Ville d'arrivée doit avoir au minimum 4 caractères
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <label class="form-label">Heure de départ</label>
+      <ngb-timepicker name="departureTime" [(ngModel)]="train.departureTime" [spinners]=false required></ngb-timepicker>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <label class="form-label">Durée de trajet</label>
+      <ngb-timepicker name="travelTime" [(ngModel)]="train.travelTime" [spinners]=false required></ngb-timepicker>
+    </div>
+
+  </div>
+
+  <div class="text-center">
+    <button [disabled]="trainForm.invalid" class="btn btn-primary" type="submit">&lt; Ajouter</button>
+  </div>
+
+</form>
