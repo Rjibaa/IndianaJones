@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class HelperService {
   constructor() {}
 
+  //Function to format Time to be a string in this format : HH:MM
   formatTime(time: { hour: number; minute: number }): string {
     const padZero = (num: number) => (num < 10 ? '0' + num : num);
     const { hour, minute } = time;
@@ -15,6 +16,7 @@ export class HelperService {
     return formattedDepartureTime;
   }
 
+  //Function to capitalize the first letter of a word
   capitalizeFirstLettre(word: string): string {
     const firstLetter = word.charAt(0);
     const firstLetterCap = firstLetter.toUpperCase();

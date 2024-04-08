@@ -4,7 +4,7 @@ import { HelperService } from '../../service/helper.service';
 import { TrainService } from '../../service/train.service';
 import { ToastrService } from 'ngx-toastr';
 import { Train } from '../../model/train';
-import { TrainInformation } from '../../type/type';
+import { TrainInformation } from '../../commun/type/type';
 
 @Component({
   selector: 'app-train-form',
@@ -29,6 +29,7 @@ export class TrainFormComponent {
 
   onSubmit(form: NgForm) {
     const { departureTime, travelTime } = this.train;
+    //format Time to be a string in this format : HH:MM
     const departureTimeInstring = this.helperService.formatTime(departureTime);
     const travelTimeInstring = this.helperService.formatTime(travelTime);
 
@@ -38,11 +39,18 @@ export class TrainFormComponent {
       travelTime: travelTimeInstring,
     };
 
+    //Make a request to the backend to add train to the database.
     this.trainService.addTrain(newTrain).subscribe(
       (response) => {
-        this.toastr.success('Train ajouté avec succées');
-        form.resetForm();
-        this.trainAdded.emit(response);
+        const { statusCode, message, data } = response;
+        const result = data.result as Train;
+        if (statusCode === 201) {
+          form.resetForm();
+          this.trainAdded.emit(result);
+          this.toastr.success('Train ajouté avec succées');
+        } else {
+          this.toastr.error(message);
+        }
       },
       (error) => {
         this.toastr.error(error.message);

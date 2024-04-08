@@ -4,7 +4,7 @@ import { Train } from './entities/train.entity';
 import { Repository } from 'typeorm';
 import { DijkstraService } from 'src/dijkstra/dijkstra.service';
 import { AddTrainDto } from './dto/add-train.dto';
-import { Dijkstra } from 'src/helper/type';
+import { Dijkstra } from 'src/commun/type/type';
 
 @Injectable()
 export class TrainService {
@@ -15,10 +15,9 @@ export class TrainService {
   ) {}
 
   //Function to save new trains
-  saveTrain(trainData: AddTrainDto) {
+  async saveTrain(trainData: AddTrainDto) {
     try {
-      const train = this.trainRepository.create(trainData);
-      console.log(train);
+      const train = await this.trainRepository.create(trainData);
       return this.trainRepository.save(train);
     } catch (error) {
       return error.message;
@@ -26,9 +25,10 @@ export class TrainService {
   }
 
   //Function to get all trains
-  getAllTrains(): Promise<Train[]> {
+  async getAllTrains(): Promise<Train[]> {
     try {
-      return this.trainRepository.find();
+      const trains = await this.trainRepository.find();
+      return trains;
     } catch (error) {
       return error.message;
     }

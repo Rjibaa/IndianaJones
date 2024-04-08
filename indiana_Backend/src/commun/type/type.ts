@@ -5,7 +5,7 @@ export type Dijkstra = {
   indianaTrain: Train[];
 };
 
-export type responseMessage = {
+export type Response = {
   statusCode: number;
   message: string;
   data: {};

@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Train } from 'src/train/entities/train.entity';
 import { PriorityQueue } from './priority-queue';
-import { calculateArrivalTime, formatTime, parseTime } from 'src/helper/helper';
-import { Dijkstra } from 'src/helper/type';
+import {
+  calculateArrivalTime,
+  formatTime,
+  parseTime,
+} from 'src/commun/helper/helper';
+import { Dijkstra } from 'src/commun/type/type';
 
 @Injectable()
 export class DijkstraService {
@@ -18,7 +22,6 @@ export class DijkstraService {
         train.travelTime,
       );
     }
-
     return graph;
   }
 
@@ -69,28 +72,31 @@ export class DijkstraService {
       //Update costs and previous nodes for neighbors
       for (const neighbor in graph[currentNode]) {
         const newCost = graph[currentNode][neighbor];
-        console.log(
-          currentNode,
-          neighbor,
-          newCost,
-          nodesCostFromStart[neighbor],
+        //See departure Time compatiblity with the previous train
+        const departureTimeCompatible = trains.some(
+          (train) =>
+            train.departureCity === currentNode &&
+            train.arrivalCity === neighbor &&
+            parseTime(train.departureTime) >= currentTime,
         );
-        if (!nodesCostFromStart[neighbor] && neighbor === arrivalCity) {
-          prevNodes[arrivalCity] = currentNode;
-          nodesCostFromStart[arrivalCity] = newCost;
-          pq.enqueue(newCost, arrivalCity);
+        //If the departure Time is compatible, we explore the node else we pass
+        if (departureTimeCompatible) {
+          if (!nodesCostFromStart[neighbor] && neighbor === arrivalCity) {
+            prevNodes[arrivalCity] = currentNode;
+            nodesCostFromStart[arrivalCity] = newCost;
+            pq.enqueue(newCost, arrivalCity);
+          }
+          if (newCost < nodesCostFromStart[neighbor]) {
+            nodesCostFromStart[neighbor] = newCost;
+            prevNodes[neighbor] = currentNode;
+            pq.enqueue(newCost, neighbor);
+          }
         }
-        if (newCost < nodesCostFromStart[neighbor]) {
-          nodesCostFromStart[neighbor] = newCost;
-          prevNodes[neighbor] = currentNode;
-          pq.enqueue(newCost, neighbor);
-        }
-        console.log(pq);
       }
     }
     // Construct the path details
     if (indianaTrain.length === 0) {
-      const pathInformation = `There is no Trains from ${departureCity} to ${arrivalCity}`;
+      const pathInformation = `There is no Trains from ${departureCity} to ${arrivalCity} today`;
       path.push(pathInformation);
     } else {
       indianaTrain.map((train) => {

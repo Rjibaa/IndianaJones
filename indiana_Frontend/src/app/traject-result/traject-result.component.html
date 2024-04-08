@@ -1,9 +1,12 @@
 <div>
     <div class="text-center">
+        <div class="mb-3" *ngIf="isEmpty">
+            Indiana Jones put your traject Information and we will find the best traject for you
+        </div>
         <button class="btn btn-primary" type="button" (click)="onClick()">&lt; Chercher le trajet</button>
     </div>
 
     <div class="mt-3">
-        <app-result-table [trains]="trains" [path]="path"></app-result-table>
+        <app-result-table [trains]="trains" [path]="path" *ngIf="!isEmpty"></app-result-table>
     </div>
 </div>

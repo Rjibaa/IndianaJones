@@ -1,6 +1,9 @@
 <div>
     <app-train-form (trainAdded)="onTrainAdded($event)"></app-train-form>
     <div class="mt-3">
-        <app-train-table [trains]="trains"></app-train-table>
+        <div class="text-center" *ngIf="isEmpty">
+            There is no trains for the moment, add trains.
+        </div>
+        <app-train-table [trains]="trains" *ngIf="!isEmpty"></app-train-table>
     </div>
 </div>

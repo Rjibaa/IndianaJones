@@ -15,4 +15,6 @@ export class TrainTableComponent {
     'Heure de départ',
     'Durée de trajet',
   ];
+
+  constructor() {}
 }

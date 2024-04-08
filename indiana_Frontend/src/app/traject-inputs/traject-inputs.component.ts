@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HelperService } from '../service/helper.service';
-import { Traject } from '../type/type';
+import { Traject } from '../commun/type/type';
 
 @Component({
   selector: 'app-traject-inputs',

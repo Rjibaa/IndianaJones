@@ -1,4 +1,4 @@
-import { Train } from '../model/train';
+import { Train } from '../../model/train';
 
 export type TrainInformation = {
   departureCity: string;
@@ -16,4 +16,10 @@ export type Traject = {
 export type Dijkstra = {
   path: string[];
   indianaTrain: Train[];
+};
+
+export type ResponseType = {
+  statusCode: number;
+  message: string;
+  data: { result: {} };
 };

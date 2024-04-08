@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Train } from '../model/train';
-import { Dijkstra, TrainInformation, Traject } from '../type/type';
+import { ResponseType, TrainInformation, Traject } from '../commun/type/type';
 
 @Injectable({
   providedIn: 'root',
@@ -12,18 +11,21 @@ export class TrainService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getTrains(): Observable<Train[]> {
+  //Function to make request to get all trains
+  public getTrains(): Observable<ResponseType> {
     const url = `${this.baseUrl}/train/all`;
-    return this.httpClient.get<Train[]>(url);
+    return this.httpClient.get<ResponseType>(url);
   }
 
-  public addTrain(train: TrainInformation): Observable<Train> {
+  //Function to make request to post new train
+  public addTrain(train: TrainInformation): Observable<ResponseType> {
     const url = `${this.baseUrl}/train/add`;
-    return this.httpClient.post<Train>(url, train);
+    return this.httpClient.post<ResponseType>(url, train);
   }
 
-  public bestTraject(traject: Traject): Observable<Dijkstra> {
-    const url = `${this.baseUrl}/train/bestTraject`;
-    return this.httpClient.post<Dijkstra>(url, traject);
+  //Function to make request to get the best traject
+  public indianaTraject(traject: Traject): Observable<ResponseType> {
+    const url = `${this.baseUrl}/train/indianaTraject`;
+    return this.httpClient.post<ResponseType>(url, traject);
   }
 }
