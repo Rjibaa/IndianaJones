@@ -1,7 +1,0 @@
-**/dist
-**/node_modules
-.dockerignore
-.eslintrc.js
-.git
-.gitignore
-.prettierrc
