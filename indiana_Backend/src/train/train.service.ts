@@ -34,7 +34,7 @@ export class TrainService {
     }
   }
 
-  //Function to get all trains that the departureTime is greater than the startTime
+  //Function to get all trains that the departure Time is greater than the star tTime
   async findTrainsWithDepartureTimeAfter(startTime: string): Promise<Train[]> {
     try {
       const [startHour, startMinute] = startTime.split(':').map(Number);
