@@ -23,9 +23,11 @@ un design responsive et moderne de l'application frontend.
 
 Pour résoudre le problème du trajet optimal pour Indiana Jones lors de son voyage, j'ai choisi d'implémenter l'algorithme de **Dijkstra**. Cet algorithme est particulièrement adapté pour trouver le chemin le plus court entre deux nœuds dans un graphe pondéré.. Ce graphe est représenté par les villes de départ et d'arrivée, 
 avec le temps d'arrivée du train à chaque station comme poids.\
+\
 L'implémentation commence par la création d'un graphe basé sur les données des trains dont les heures de départ sont postérieures à l'heure de départ 
 d'Indiana Jones. Chaque nœud représente une ville et chaque arête un trajet de train entre deux villes. L'algorithme explore ensuite ce graphe à partir 
 de la ville de départ, utilisant une file de priorité pour sélectionner les nœuds voisins et mettre à jour les coûts de trajet les plus courts jusqu'à atteindre la ville d'arrivée.\
+\
 Durant cette exploration, les horaires de départ des trains sont pris en compte pour garantir que les trajets sélectionnés respectent les contraintes de temps.
 Une fois la ville d'arrivée atteinte, l'algorithme reconstruit le trajet optimal en remontant le chemin le plus court jusqu'à la ville de départ. 
 Enfin, il retourne les détails du trajet optimal, incluant les trains à prendre et les heures de départ et d'arrivée. 
