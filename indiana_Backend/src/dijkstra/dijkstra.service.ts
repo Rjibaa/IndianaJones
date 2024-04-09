@@ -5,8 +5,8 @@ import {
   calculateArrivalTime,
   formatTime,
   parseTime,
-} from 'src/commun/helper/helper';
-import { Dijkstra } from 'src/commun/type/type';
+} from 'src/common/helper/helper';
+import { Dijkstra } from 'src/common/type/type';
 
 @Injectable()
 export class DijkstraService {

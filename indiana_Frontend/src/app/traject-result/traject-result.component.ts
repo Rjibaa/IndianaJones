@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TrainService } from '../service/train.service';
 import { Train } from '../model/train';
-import { Dijkstra, Traject } from '../commun/type/type';
+import { Dijkstra, Traject } from '../common/type/type';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

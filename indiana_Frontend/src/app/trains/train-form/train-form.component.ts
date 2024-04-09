@@ -4,7 +4,7 @@ import { HelperService } from '../../service/helper.service';
 import { TrainService } from '../../service/train.service';
 import { ToastrService } from 'ngx-toastr';
 import { Train } from '../../model/train';
-import { TrainInformation } from '../../commun/type/type';
+import { TrainInformation } from '../../common/type/type';
 
 @Component({
   selector: 'app-train-form',

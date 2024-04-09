@@ -4,7 +4,7 @@ import { Train } from './entities/train.entity';
 import { Repository } from 'typeorm';
 import { DijkstraService } from 'src/dijkstra/dijkstra.service';
 import { AddTrainDto } from './dto/add-train.dto';
-import { Dijkstra } from 'src/commun/type/type';
+import { Dijkstra } from 'src/common/type/type';
 
 @Injectable()
 export class TrainService {

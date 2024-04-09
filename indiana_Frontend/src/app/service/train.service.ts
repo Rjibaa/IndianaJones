@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResponseType, TrainInformation, Traject } from '../commun/type/type';
+import { ResponseType, TrainInformation, Traject } from '../common/type/type';
 
 @Injectable({
   providedIn: 'root',

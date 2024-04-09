@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Traject } from './commun/type/type';
+import { Traject } from './common/type/type';
 
 @Component({
   selector: 'app-root',

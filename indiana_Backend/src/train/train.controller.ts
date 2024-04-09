@@ -9,8 +9,8 @@ import {
 import { TrainService } from './train.service';
 import { AddTrainDto } from './dto/add-train.dto';
 import { GetTrajectDto } from './dto/get-traject.dto';
-import { HttpExceptionFilter } from 'src/commun/filter/http-exception/http-exception.filter';
-import { TransformInterceptor } from 'src/commun/interceptor/interceptor/transform.interceptor';
+import { HttpExceptionFilter } from 'src/common/filter/http-exception/http-exception.filter';
+import { TransformInterceptor } from 'src/common/interceptor/interceptor/transform.interceptor';
 
 @Controller('train')
 @UseFilters(HttpExceptionFilter)
