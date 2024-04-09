@@ -36,7 +36,7 @@ export class TrajectResultComponent {
           'Indiana you need to put a departure and arrival cities correctly'
         );
       } else {
-        // Make a request to the backend to find the best traject based on the provided Indiana traject.
+        // Make a request to the backend to find the best traject based on the provided Indiana traject
         this.trainService.indianaTraject(this.indianaTraject).subscribe(
           (response) => {
             const { statusCode, message, data } = response;
